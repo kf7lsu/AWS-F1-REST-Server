@@ -1,0 +1,2 @@
+gcc getredirect.c -lcurl                       
+
