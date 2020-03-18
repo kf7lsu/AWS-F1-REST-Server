@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include <curl/curl.h>
 
-char *target = "127.0.0.1:5000/predict";
+char *target = "http://ec2-52-41-9-56.us-west-2.compute.amazonaws.com:5000/predict";
 char *file_name = "ILSVRC2012_val_00000003.jpeg";
 
 size_t handle_data(char *data, size_t n, size_t l, void *userp) {
@@ -32,7 +32,7 @@ int main(void)
 
     curl_mime_name(field, "image");
     curl_mime_filedata(field, file_name);
-    
+
     curl_easy_setopt(curl, CURLOPT_MIMEPOST, form);
 
     /* Perform the request, res will get the return code */
@@ -45,6 +45,7 @@ int main(void)
       res = curl_easy_getinfo(curl, CURLINFO_RESPONSE_CODE, &response_code);
       if((res == CURLE_OK) &&
          ((response_code / 100) == 4)) {
+      } else {
         /* a redirect implies a 3xx response code */
         fprintf(stderr, "Connection error");
       }
