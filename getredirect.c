@@ -5,6 +5,13 @@
 
 char *target = "https://www.google.com/";
 
+size_t handle_data(char *data, size_t n, size_t l, void *userp) {
+  for (int i = 0; i < n*l; i++) {
+    putchar(data[i]);
+  }
+  return n*l;
+}
+
 int main(void)
 {
   CURL *curl;
@@ -15,8 +22,7 @@ int main(void)
   curl = curl_easy_init();
   if(curl) {
     curl_easy_setopt(curl, CURLOPT_URL, target);
-
-    /* example.com is redirected, figure out the redirection! */
+    curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, handle_data);
 
     /* Perform the request, res will get the return code */
     res = curl_easy_perform(curl);
@@ -27,18 +33,9 @@ int main(void)
     else {
       res = curl_easy_getinfo(curl, CURLINFO_RESPONSE_CODE, &response_code);
       if((res == CURLE_OK) &&
-         ((response_code / 100) != 3)) {
+         ((response_code / 100) == 4)) {
         /* a redirect implies a 3xx response code */
-        fprintf(stderr, "Not a redirect.\n");
-      }
-      else {
-        res = curl_easy_getinfo(curl, CURLINFO_REDIRECT_URL, &location);
-
-        if((res == CURLE_OK) && location) {
-          /* This is the new absolute URL that you could redirect to, even if
-           * the Location: response header may have been a relative URL. */
-          printf("Redirected to: %s\n", location);
-        }
+        fprintf(stderr, "Connection error");
       }
     }
 
