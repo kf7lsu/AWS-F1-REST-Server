@@ -1,2 +1,2 @@
-gcc getredirect.c -lcurl                       
+gcc predict.c -lcurl                       
 
