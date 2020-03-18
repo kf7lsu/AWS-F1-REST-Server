@@ -1,9 +1,11 @@
 // Adopted from https://curl.haxx.se/libcurl/c/getredirect.html
+// Adopted from https://curl.haxx.se/libcurl/c/postit2.html
 // Tom Lou (louyu27@cs.washington.edu)
 #include <stdio.h>
 #include <curl/curl.h>
 
-char *target = "https://www.google.com/";
+char *target = "127.0.0.1:5000/predict";
+char *file_name = "ILSVRC2012_val_00000003.jpeg";
 
 size_t handle_data(char *data, size_t n, size_t l, void *userp) {
   for (int i = 0; i < n*l; i++) {
@@ -23,6 +25,15 @@ int main(void)
   if(curl) {
     curl_easy_setopt(curl, CURLOPT_URL, target);
     curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, handle_data);
+
+    curl_mime *form = curl_mime_init(curl);
+
+    curl_mimepart *field = curl_mime_addpart(form);;
+
+    curl_mime_name(field, "image");
+    curl_mime_filedata(field, file_name);
+    
+    curl_easy_setopt(curl, CURLOPT_MIMEPOST, form);
 
     /* Perform the request, res will get the return code */
     res = curl_easy_perform(curl);
