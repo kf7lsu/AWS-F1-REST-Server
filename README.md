@@ -10,7 +10,7 @@ To run the client:
 
 1. Install `libcurl`
 2. Change the server address in `predict.c`
-3. Run `compile.sh`
+3. Run `make`
 4. Run `a.out`
 
 Example Output:
