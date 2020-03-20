@@ -4,10 +4,10 @@
 #include <stdio.h>
 #include <curl/curl.h>
 
-char *target = "http://ec2-52-41-9-56.us-west-2.compute.amazonaws.com:5000/predict";
-char *file_name = "ILSVRC2012_val_00000003.jpeg";
+const char *target = "http://127.0.0.1:5000/predict";
+const char *file_name = "ILSVRC2012_val_00000003.jpeg";
 
-size_t handle_data(char *data, size_t n, size_t l, void *userp) {
+size_t handle_data(const char *data, size_t n, size_t l, void *userp) {
   for (int i = 0; i < n*l; i++) {
     putchar(data[i]);
   }
