@@ -8,7 +8,7 @@ To run the server:
 
 To run the client:
 
-1. Install `libcurl`
+1. Install `libcurl4-gnutls-dev`
 2. Change the server address in `predict.c`
 3. Run `make`
 4. Run `a.out`
