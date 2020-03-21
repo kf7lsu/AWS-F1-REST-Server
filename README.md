@@ -9,9 +9,9 @@ To run the server:
 To run the client:
 
 1. Install `libcurl4-gnutls-dev`
-2. Change the server address in `predict.c`
+2. Change the server address in `Config.cpp`
 3. Run `make`
-4. Run `a.out`
+4. Run `main.out`
 
 Example Output:
 
