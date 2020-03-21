@@ -44,15 +44,15 @@ int main(void)
     else {
       res = curl_easy_getinfo(curl, CURLINFO_RESPONSE_CODE, &response_code);
       if((res == CURLE_OK) &&
-         ((response_code / 100) == 4)) {
+         ((response_code / 100) == 2)) {
       } else {
-        /* a redirect implies a 3xx response code */
-        fprintf(stderr, "Connection error");
+        fprintf(stderr, "Connection error. res = %d, response code = %ld\n", res, response_code);
       }
     }
 
     /* always cleanup */
     curl_easy_cleanup(curl);
+
   }
   return 0;
 }
