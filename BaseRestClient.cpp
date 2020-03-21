@@ -17,6 +17,8 @@ void BaseClient::sendRequest() {
     return;
   }
 
+  requestSent = true;
+
   CURL *curl = curl_easy_init();
   if (!curl) {
     throw std::runtime_error("Rest API Client: Failed to initialize curl");
