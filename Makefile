@@ -13,4 +13,4 @@ BaseRestClient.o: BaseRestClient.cpp BaseRestClient.h Config.cpp
 	curl-config --checkfor 7.56 && $(CC) -c BaseRestClient.cpp $(CFLAGS) $(LIBS)
 
 clean:
-	rm *.out
+	rm *.out *.o
