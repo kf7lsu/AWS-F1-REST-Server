@@ -23,7 +23,6 @@ def predict():
         response = None  # InferImage(net, image, synset_words)
         data["success"] = True
         data["response"] = response
-
     return flask.jsonify(data)
 
 
