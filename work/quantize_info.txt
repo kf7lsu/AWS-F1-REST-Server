@@ -1,0 +1,140 @@
+0 data 8 -1
+1 data_bn 8 -1 8 5 8 12 8 5
+2 conv1 8 5 8 5 8 8 8 6
+3 conv1_relu 8 5 8 5
+4 conv1_pool 8 5 8 5
+5 layer_64_1_conv1 8 5 8 6 8 7 8 7
+6 layer_64_1_relu2 8 6 8 6
+7 layer_64_1_conv2 8 6 8 6 8 8 8 6
+8 layer_64_1_relu3 8 6 8 6
+9 layer_64_1_conv3 8 6 8 6 8 8 8 0
+10 layer_64_1_conv_expand 8 6 8 6 8 8 8 0
+11 layer_64_1_sum 8 6 8 6 8 6
+12 layer_64_2_bn1 8 6 8 7 8 5 8 7
+13 layer_64_2_relu1 8 7 8 7
+14 layer_64_2_conv1 8 7 8 6 8 7 8 7
+15 layer_64_2_relu2 8 6 8 6
+16 layer_64_2_conv2 8 6 8 6 8 8 8 7
+17 layer_64_2_relu3 8 6 8 6
+18 layer_64_2_conv3 8 6 8 8 8 8 8 0
+19 layer_64_2_sum 8 8 8 6 8 6
+20 layer_64_3_bn1 8 6 8 7 8 6 8 7
+21 layer_64_3_relu1 8 7 8 7
+22 layer_64_3_conv1 8 7 8 6 8 6 8 7
+23 layer_64_3_relu2 8 6 8 6
+24 layer_64_3_conv2 8 6 8 6 8 8 8 7
+25 layer_64_3_relu3 8 6 8 6
+26 layer_64_3_conv3 8 6 8 7 8 9 8 0
+27 layer_64_3_sum 8 7 8 6 8 6
+28 layer_128_1_bn1 8 6 8 6 8 6 8 7
+29 layer_128_1_relu1 8 6 8 6
+30 layer_128_1_conv1 8 6 8 6 8 7 8 7
+31 layer_128_1_relu2 8 6 8 6
+32 layer_128_1_conv2 8 6 8 6 8 9 8 8
+33 layer_128_1_relu3 8 6 8 6
+34 layer_128_1_conv3 8 6 8 7 8 9 8 0
+35 layer_128_1_conv_expand 8 6 8 7 8 8 8 0
+36 layer_128_1_sum 8 7 8 7 8 7
+37 layer_128_2_bn1 8 7 8 7 8 6 8 8
+38 layer_128_2_relu1 8 7 8 7
+39 layer_128_2_conv1 8 7 8 7 8 8 8 7
+40 layer_128_2_relu2 8 7 8 7
+41 layer_128_2_conv2 8 7 8 6 8 9 8 6
+42 layer_128_2_relu3 8 6 8 6
+43 layer_128_2_conv3 8 6 8 8 8 9 8 0
+44 layer_128_2_sum 8 8 8 7 8 7
+45 layer_128_3_bn1 8 7 8 7 8 6 8 7
+46 layer_128_3_relu1 8 7 8 7
+47 layer_128_3_conv1 8 7 8 7 8 7 8 8
+48 layer_128_3_relu2 8 7 8 7
+49 layer_128_3_conv2 8 7 8 6 8 9 8 7
+50 layer_128_3_relu3 8 6 8 6
+51 layer_128_3_conv3 8 6 8 8 8 9 8 0
+52 layer_128_3_sum 8 8 8 7 8 7
+53 layer_128_4_bn1 8 7 8 7 8 6 8 7
+54 layer_128_4_relu1 8 7 8 7
+55 layer_128_4_conv1 8 7 8 6 8 8 8 8
+56 layer_128_4_relu2 8 6 8 6
+57 layer_128_4_conv2 8 6 8 6 8 8 8 7
+58 layer_128_4_relu3 8 6 8 6
+59 layer_128_4_conv3 8 6 8 8 8 9 8 0
+60 layer_128_4_sum 8 8 8 7 8 7
+61 layer_256_1_bn1 8 7 8 7 8 6 8 7
+62 layer_256_1_relu1 8 7 8 7
+63 layer_256_1_conv1 8 7 8 6 8 7 8 7
+64 layer_256_1_relu2 8 6 8 6
+65 layer_256_1_conv2 8 6 8 7 8 10 8 8
+66 layer_256_1_relu3 8 7 8 7
+67 layer_256_1_conv3 8 7 8 8 8 9 8 0
+68 layer_256_1_conv_expand 8 7 8 8 8 9 8 0
+69 layer_256_1_sum 8 8 8 8 8 7
+70 layer_256_2_bn1 8 7 8 7 8 6 8 8
+71 layer_256_2_relu1 8 7 8 7
+72 layer_256_2_conv1 8 7 8 6 8 8 8 7
+73 layer_256_2_relu2 8 6 8 6
+74 layer_256_2_conv2 8 6 8 6 8 9 8 7
+75 layer_256_2_relu3 8 6 8 6
+76 layer_256_2_conv3 8 6 8 8 8 9 8 0
+77 layer_256_2_sum 8 8 8 7 8 7
+78 layer_256_3_bn1 8 7 8 7 8 6 8 8
+79 layer_256_3_relu1 8 7 8 7
+80 layer_256_3_conv1 8 7 8 6 8 8 8 8
+81 layer_256_3_relu2 8 6 8 6
+82 layer_256_3_conv2 8 6 8 7 8 9 8 7
+83 layer_256_3_relu3 8 7 8 7
+84 layer_256_3_conv3 8 7 8 8 8 9 8 0
+85 layer_256_3_sum 8 8 8 7 8 7
+86 layer_256_4_bn1 8 7 8 7 8 6 8 8
+87 layer_256_4_relu1 8 7 8 7
+88 layer_256_4_conv1 8 7 8 6 8 8 8 8
+89 layer_256_4_relu2 8 6 8 6
+90 layer_256_4_conv2 8 6 8 6 8 9 8 7
+91 layer_256_4_relu3 8 6 8 6
+92 layer_256_4_conv3 8 6 8 8 8 9 8 0
+93 layer_256_4_sum 8 8 8 7 8 7
+94 layer_256_5_bn1 8 7 8 7 8 6 8 8
+95 layer_256_5_relu1 8 7 8 7
+96 layer_256_5_conv1 8 7 8 7 8 8 8 8
+97 layer_256_5_relu2 8 7 8 7
+98 layer_256_5_conv2 8 7 8 6 8 9 8 7
+99 layer_256_5_relu3 8 6 8 6
+100 layer_256_5_conv3 8 6 8 8 8 9 8 0
+101 layer_256_5_sum 8 8 8 7 8 7
+102 layer_256_6_bn1 8 7 8 7 8 6 8 7
+103 layer_256_6_relu1 8 7 8 7
+104 layer_256_6_conv1 8 7 8 6 8 7 8 8
+105 layer_256_6_relu2 8 6 8 6
+106 layer_256_6_conv2 8 6 8 6 8 9 8 7
+107 layer_256_6_relu3 8 6 8 6
+108 layer_256_6_conv3 8 6 8 8 8 9 8 0
+109 layer_256_6_sum 8 8 8 7 8 6
+110 layer_512_1_bn1 8 6 8 7 8 6 8 7
+111 layer_512_1_relu1 8 7 8 7
+112 layer_512_1_conv1 8 7 8 6 8 7 8 9
+113 layer_512_1_relu2 8 6 8 6
+114 layer_512_1_conv2 8 6 8 7 8 10 8 9
+115 layer_512_1_relu3 8 7 8 7
+116 layer_512_1_conv3 8 7 8 8 8 9 8 0
+117 layer_512_1_conv_expand 8 7 8 9 8 10 8 0
+118 layer_512_1_sum 8 8 8 9 8 8
+119 layer_512_2_bn1 8 8 8 7 8 5 8 7
+120 layer_512_2_relu1 8 7 8 7
+121 layer_512_2_conv1 8 7 8 6 8 8 8 7
+122 layer_512_2_relu2 8 6 8 6
+123 layer_512_2_conv2 8 6 8 7 8 10 8 7
+124 layer_512_2_relu3 8 7 8 7
+125 layer_512_2_conv3 8 7 8 8 8 9 8 0
+126 layer_512_2_sum 8 8 8 8 8 8
+127 layer_512_3_bn1 8 8 8 7 8 5 8 7
+128 layer_512_3_relu1 8 7 8 7
+129 layer_512_3_conv1 8 7 8 6 8 7 8 7
+130 layer_512_3_relu2 8 6 8 6
+131 layer_512_3_conv2 8 6 8 5 8 9 8 7
+132 layer_512_3_relu3 8 5 8 5
+133 layer_512_3_conv3 8 5 8 6 8 10 8 0
+134 layer_512_3_sum 8 6 8 8 8 4
+135 last_bn 8 4 8 4 8 4 8 6
+136 last_relu 8 4 8 4
+137 global_pool 8 4 8 5
+138 score 8 5 8 2 8 9 8 11
+139 loss 8 2

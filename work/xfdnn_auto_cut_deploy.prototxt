@@ -1,0 +1,58 @@
+layer {
+  name: "data"
+  type: "Input"
+  top: "data"
+  transform_param {
+    mirror: false
+    crop_size: 224
+    mean_value: 0.0
+    mean_value: 0.0
+    mean_value: 0.0
+  }
+  input_param {
+    shape {
+      dim: 1
+      dim: 3
+      dim: 224
+      dim: 224
+    }
+  }
+}
+layer {
+  name: "xfdnn/subgraph0"
+  type: "Python"
+  bottom: "data"
+  top: "global_pool"
+  top: "xfdnn/subgraph0/latency"
+  python_param {
+    module: "CaffeXFDNN"
+    layer: "CaffeXFDNN"
+    param_str: "{\'batch_sz\': 1, \'outtrainproto\': \'work/xfdnn_auto_cut_train_val.prototxt\', \'input_names\': [u\'data\'], \'cutAfter\': \'data\', \'outproto\': \'work/xfdnn_auto_cut_deploy.prototxt\', \'xdnnv3\': True, \'inproto\': \'work/deploy.prototxt\', \'overlaycfg\': {u\'XDNN_NUM_KERNELS\': u\'1\', u\'SDX_VERSION\': u\'2018.2\', u\'XDNN_VERSION_MINOR\': u\'0\', u\'XDNN_SLR_IDX\': u\'1\', u\'XDNN_DDR_BANK\': u\'2\', u\'XDNN_CSR_BASE\': u\'0x0\', u\'XDNN_BITWIDTH\': u\'8\', u\'DSA_VERSION\': u\'xilinx_aws-vu9p-f1-04261818_dynamic_5_0\', u\'XDNN_VERSION_MAJOR\': u\'3\'}, \'profile\': True, \'trainproto\': \'/opt/models/caffe/resnet50_v2/resnet50_v2_train_val.prototxt\', \'weights\': \'work/deploy.caffemodel_data.h5\', \'quantizecfg\': \'work/quantizer.json\', \'xclbin\': \'/opt/ml-suite/overlaybins/aws/overlay_4.xclbin\', \'netcfg\': \'work/compiler.json\', \'output_names\': [u\'global_pool\']}"
+  }
+}
+layer {
+  name: "score"
+  type: "InnerProduct"
+  bottom: "global_pool"
+  top: "score"
+  param {
+    lr_mult: 1.0
+    decay_mult: 1.0
+  }
+  param {
+    lr_mult: 2.0
+    decay_mult: 1.0
+  }
+  phase: TRAIN
+  inner_product_param {
+    num_output: 1000
+  }
+}
+layer {
+  name: "loss"
+  type: "Softmax"
+  bottom: "score"
+  top: "loss"
+  loss_weight: 1.0
+  phase: TRAIN
+}
