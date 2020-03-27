@@ -29,14 +29,14 @@ def InferImage(net,image,labels):
   net.blobs['data'].data[...] = transformer.preprocess('data',img)
   ptxtShape = net.blobs["data"].data.shape
   print ("Running with shape of: ",ptxtShape)
-  out = net.forward()
-  for key in out:
-    try:
-      if out[key].shape[1] == 1000:
-        softmax = out[key]
-    except:
-      pass
   with board_avail:
+    out = net.forward()
+    for key in out:
+      try:
+        if out[key].shape[1] == 1000:
+          softmax = out[key]
+      except:
+        pass
     Labels = xdnn_io.get_labels(labels)
     xdnn_io.printClassification(softmax,[image],Labels)
     result = xdnn_io.getClassification(softmax,[image],Labels)
