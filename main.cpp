@@ -3,7 +3,7 @@
 #include "BaseRestClient.h"
 
 int main() {
-  std::cout << "start" << std::endl;
+  //std::cout << "start" << std::endl;
   int iters = 0;
   int numClients = 1;
   std::chrono::time_point<std::chrono::steady_clock> startTimes[numClients];
@@ -35,8 +35,8 @@ int main() {
      sumLat += currLat;
   }
   avgLat = sumLat / numClients;
-  std::cout << "throughput: " << (std::chrono::duration_cast<std::chrono::nanoseconds>(end - start).count()) / numClients << " ns/img" << std::endl;
-  std::cout << "avg latency: " << avgLat << " ms" << std::endl;
+  //std::cout << "throughput: " << (std::chrono::duration_cast<std::chrono::nanoseconds>(end - start).count()) / numClients << " ns/img" << std::endl;
+  std::cout << avgLat << " ms" << std::endl;
   //std::cout << "iters: " << iters << std::endl;
   return 0;
 }
