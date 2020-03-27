@@ -5,6 +5,7 @@ import os,sys,argparse
 import caffe
 import flask
 import io
+from threading import Lock
 
 app = flask.Flask(__name__)
  
@@ -35,13 +36,10 @@ def InferImage(net,image,labels):
         softmax = out[key]
     except:
       pass
-  while not board_avail:
-    pass
-  board_avail = False
-  Labels = xdnn_io.get_labels(labels)
-  xdnn_io.printClassification(softmax,[image],Labels)
-  result = xdnn_io.getClassification(softmax,[image],Labels)
-  board_avail = True
+  with board_avail:
+    Labels = xdnn_io.get_labels(labels)
+    xdnn_io.printClassification(softmax,[image],Labels)
+    result = xdnn_io.getClassification(softmax,[image],Labels)
   return result 
 
 @app.route("/predict", methods=["POST"])
@@ -86,7 +84,7 @@ if __name__ == "__main__":
 
   print("Loading FPGA with image...")
   net = LoadImage(prototxt, model, synset_words)
-  board_avail = True;
+  board_avail = Lock()
 
   print("Starting Flask Server...")
   app.run('0.0.0.0', port=port)
